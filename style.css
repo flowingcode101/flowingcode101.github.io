@@ -1,0 +1,39 @@
+#title-hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 15%;
+  margin-right:15%;
+  border-style: inset;
+  border-width: 0.001em;
+  }
+
+#tabs {
+	/*background-color: Black;*/	
+	color: Black;
+	font-style: normal;
+	font-size: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+	}
+
+#circle {
+      width: 50px;
+      height: 50px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      background: black;
+      align-self: center;
+  	}
+
+
+* {
+  box-sizing: border-box;
+}
+
+#tab {
+	margin-left: 20%;
+	margin-right: 20%;
+	align-self: Center;
+}
