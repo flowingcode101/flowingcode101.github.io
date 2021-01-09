@@ -2,38 +2,30 @@
   display: block;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  margin-left: 15%;
-  margin-right:15%;
+  margin-right:5%;
   border-style: inset;
   border-width: 0.001em;
   }
 
 #tabs {
-	/*background-color: Black;*/	
+	height: 5%;
 	color: Black;
 	font-style: normal;
-	font-size: 1em;
+	font-size: 1.1em;
 	margin-left: 1em;
 	margin-right: 1em;
 	}
 
-#circle {
-      width: 50px;
-      height: 50px;
-      -webkit-border-radius: 25px;
-      -moz-border-radius: 25px;
-      border-radius: 25px;
-      background: black;
-      align-self: center;
-  	}
-
-
-* {
-  box-sizing: border-box;
+a {
+	text-decoration: none;
 }
 
-#tab {
-	margin-left: 20%;
-	margin-right: 20%;
-	align-self: Center;
+#content {
+	margin-top: 5%;
+	font-size: 1.25em;
+}
+
+body {
+	margin-left: 15%;
+	margin-right: 10%;
 }
