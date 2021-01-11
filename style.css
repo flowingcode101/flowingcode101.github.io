@@ -2,12 +2,16 @@
   display: block;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  margin-right:5%;
+  margin-left: 15%;
+  margin-right:15%;
   border-style: inset;
   border-width: 0.001em;
   }
-
-#tabs {
+#tab {
+	margin-left: 15%;
+	margin-right: 15%;
+}
+#tab-button {
 	height: 5%;
 	color: Black;
 	font-style: normal;
@@ -15,17 +19,89 @@
 	margin-left: 1em;
 	margin-right: 1em;
 	}
-
 a {
 	text-decoration: none;
 }
 
-#content {
-	margin-top: 5%;
-	font-size: 1.25em;
+
+#side-tab {
+	width: 12em;
+	height: 3em;
+	border-color: Black;
+	background-color: White;
+	color: Black;
+	font-size: 85%;
+	font-style: bold;
+	padding: none;
+	margin: none;
+	float: true;
+}
+
+#defaultOpen {
+	width: 12em;
+	height: 3em;
+	border-color: Black;
+	background-color: White;
+	color: Black;
+	font-size: 85%;
+	font-style: bold;
+	padding: none;
+	margin: none;
+	float: true;
+	margin-bottom: 2%;
+}
+
+
+* {
+  box-sizing: border-box;
 }
 
 body {
+  margin: 0;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 15%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 85%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+.content {
+	font-size: 1.2em;
+	margin-right: 15%;
+}
+
+#post-title {
 	margin-left: 15%;
-	margin-right: 10%;
+	padding-bottom: 1.2em;
+}
+
+#home-content {
+	margin-left: 15%;
+	margin-right: 15%;
+
 }

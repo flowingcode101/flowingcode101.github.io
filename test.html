@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Flowing Code
+	</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!--<div id='circle' align = center></div>-->
+	<h1 align = center> Flowing Code </h1>
+	<h3 align = center> <i> Code that makes things flow... </i> </h3>
+	
+	<hr id='title-hr'>
+	<div id='tab'>
+		<a href = "index.html" id = 'tab-button'> HOME </a>
+		<a href="index.html" id = 'tab-button'> REFERENCES</a>
+	</div>
+	<hr id='title-hr'>
+	<h1> Idea of Grid </h1>
+	<div class="row">
+	  <div class="column side">
+	    <button class = 'tablinks' onClick=openTab(event,'Theory') id="defaultOpen"> THEORY </button> <br>
+		<button class = 'tablinks' id='side-tab' onClick=openTab(event,'Code')> CODE </button>
+	  </div>
+	  
+	  <div class="column middle">
+	    	<div id='Theory' class='content'>
+				Theory <br>
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+			</div>
+
+			<div id='Code' class='content'>
+				Code <br>
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+			</div>
+	  </div>
+
+	  <script type="text/javascript">
+		document.getElementById("defaultOpen").click();
+		function openTab(evt, tabName){
+  			var i, tabcontent, tablinks;
+  			tabcontent = document.getElementsByClassName("content");
+  			for (i = 0; i < tabcontent.length; i++) {
+    			tabcontent[i].style.display = "none";
+  			}
+  			tablinks = document.getElementsByClassName("tablinks");
+  			for (i = 0; i < tablinks.length; i++) {
+    			tablinks[i].className = tablinks[i].className.replace(" active", "");
+  			}
+  			document.getElementById(tabName).style.display = "block";
+  			evt.currentTarget.className += " active";
+		}
+	</script>
+</body>
+</html>
