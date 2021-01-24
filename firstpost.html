@@ -26,17 +26,138 @@
 	  </div>
 	  
 	  <div class="column middle">
-	    	<div id='Theory' class='content'>
-				Theory <br>
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+	    	<div id='Theory' class='content' align="justify">
+				A grid is essential in a computational flows. To understand the idea of grid better, the understanding of discrete mathematics can help. Let us consider a continuous function like y = sin(x) for a range [0,2π] shown in Fig. 1.a
+				
+				<br><br>
+
+				<br>
+
+				<img src="https://lh3.googleusercontent.com/-M4U0dgNQtc4/X_yrMK8m62I/AAAAAAAAAAM/dWmKqBRFq_88TAKW-RhPzmaN06rwqXpZgCLcBGAsYHQ/image.png" align="center">
+
+				<br>
+
+				<div id = 'caption'><em>Fig.1 Function sin(x)</em></div>
+
+				<br><br>
+				The rest of the graphs are drawn for same sin(x) function but with a number of discrete points as 5, 10 and 50. So, it is possible to represent a continuous function using a sufficient number of discrete points. Similarly in a physical space, the discrete points that we use to represent the entire continuous space are called cells. And a collection of cells is called grid/mesh.
+
+				<br><br>
+
+				<br>
+
+				<img src="https://lh3.googleusercontent.com/-M4U0dgNQtc4/X_yrMK8m62I/AAAAAAAAAAM/dWmKqBRFq_88TAKW-RhPzmaN06rwqXpZgCLcBGAsYHQ/image.png" align="center">
+
+				<br>
+
+				<div id = 'caption'><em>Fig.2 Grid Nomenclature</em></div>
+
+				So if we try to compute the flow of water through pipe, the physical space is continuous there and we have flow at all points in the pipe. But in order to represent that flow, we use a discrete representation of the space by dividing the area/volume into a discrete number of cells where we try to compute flow variables.
+
+				<br><br>
+
+				A grid/cell is an imaginary partition of the flow or the system that we decide to simulate the flow of heat, fluid, mass, etc. Typical nomenclature for the cell parameters used in the code is shown.
+
+				<br><br>
+
+				We divide the domain into such cells/grids. The cells can be uniformly divided or non-uniform. The cell can be of any shape also, viz., quadrilateral, tetragonal, hexagonal, triangular, etc. For a non-uniform gird, we use geometric progression to divide the cells in an increasing or decreasing manner.
+
+				<br><br>
+
+				In this code, a simple rectangular cartesian grid will be created with different kinds of meshing.
 			</div>
 
-			<div id='Code' class='content'>
-				Code <br>
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+			<div id='Code' class='content' align="justify">
+				The calculation of face-centers is the major part of the grid generating process. After that, other parameters can be derived from face-centers easily.
+
+				<br><br>
+
+				As mentioned earlier, there are various kinds of dividing a grid, here we will see three kinds of meshing.
+				<ol>
+					<li> Uniform Meshing
+					<li> Non-Uniform Meshing (Increasing/Decreasing)
+					<li> Bell-shaped (Refined at both ends)
+				</ol>
+
+				<br><br>
+
+				Uniformly Divided Face-centers:
+
+				<br><br>
+
+				<div class="highlight" style="background: rgb(248, 248, 248);"><pre style="line-height: 125%;"><span></span><span style="color: black;">Fc</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: black; font-weight: bold;">[</span><span style="color: #0000cf; font-weight: bold;">0</span><span style="color: black; font-weight: bold;">]</span>
+<span style="color: #204a87; font-weight: bold;">for</span> <span style="color: black;">i</span> <span style="color: #204a87; font-weight: bold;">in</span> <span style="color: #204a87;">range</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">N</span><span style="color: black; font-weight: bold;">):</span>
+   <span style="color: black;">Fc</span><span style="color: #ce5c00; font-weight: bold;">.</span><span style="color: black;">append</span><span style="color: black; font-weight: bold;">(</span>Fc[i]+<span style="color: black;">L</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: black;">N</span><span style="color: black; font-weight: bold;">)</span>
+</pre></div>
+
+
+				<br><br>
+				Non-Uniformly Divided (Increasing):
+
+				<br><br>
+
+				<div class="highlight" style="background: rgb(248, 248, 248);"><pre style="line-height: 125%;"><span></span><span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: #0000cf; font-weight: bold;">1.5</span>
+<span style="color: black;">a</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: black;">L</span><span style="color: #ce5c00; font-weight: bold;">*</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">-</span><span style="color: #0000cf; font-weight: bold;">1</span><span style="color: black; font-weight: bold;">)</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: black; font-weight: bold;">((</span><span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">**</span><span style="color: black;">N</span><span style="color: black; font-weight: bold;">)</span><span style="color: #ce5c00; font-weight: bold;">-</span><span style="color: #0000cf; font-weight: bold;">1</span><span style="color: black; font-weight: bold;">)</span>
+<span style="color: black;">Fc</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: black; font-weight: bold;">[</span><span style="color: #0000cf; font-weight: bold;">0</span><span style="color: black; font-weight: bold;">]</span>
+<span style="color: #204a87; font-weight: bold;">for</span> <span style="color: black;">i</span> <span style="color: #204a87; font-weight: bold;">in</span> <span style="color: #204a87;">range</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">N</span><span style="color: black; font-weight: bold;">):</span>
+   <span style="color: black;">Fc</span><span style="color: #ce5c00; font-weight: bold;">.</span><span style="color: black;">append</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">Fc</span><span style="color: black; font-weight: bold;">[</span><span style="color: black;">i</span><span style="color: black; font-weight: bold;">]</span><span style="color: #ce5c00; font-weight: bold;">+</span><span style="color: black;">a</span><span style="color: #ce5c00; font-weight: bold;">*</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">**</span><span style="color: black;">i</span><span style="color: black; font-weight: bold;">)</span></pre></div>
+
+				<br><br>
+
+				For decreasing mesh, ratio r value has to be reciprocated.
+
+				<br><br>
+
+				Bell-shaped Meshing:
+
+				<br><br>
+
+				<div class="highlight" style="background: rgb(248, 248, 248);"><pre style="line-height: 125%;"><span></span><span style="color: black;">Fc</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: black; font-weight: bold;">[</span><span style="color: #0000cf; font-weight: bold;">0</span><span style="color: black; font-weight: bold;">]</span>
+
+<span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: #0000cf; font-weight: bold;">1.5</span>
+<span style="color: black;">r2</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: #0000cf; font-weight: bold;">1</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: black;">r</span>
+
+<span style="color: black;">a</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">L</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: #0000cf; font-weight: bold;">2</span><span style="color: black; font-weight: bold;">)</span><span style="color: #ce5c00; font-weight: bold;">*</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">-</span><span style="color: #0000cf; font-weight: bold;">1</span><span style="color: black; font-weight: bold;">)</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: black; font-weight: bold;">((</span><span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">**</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">N</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: #0000cf; font-weight: bold;">2</span><span style="color: black; font-weight: bold;">))</span><span style="color: #ce5c00; font-weight: bold;">-</span><span style="color: #0000cf; font-weight: bold;">1</span><span style="color: black; font-weight: bold;">)</span>
+<span style="color: black;">a2</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">L</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: #0000cf; font-weight: bold;">2</span><span style="color: black; font-weight: bold;">)</span><span style="color: #ce5c00; font-weight: bold;">*</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">r2</span><span style="color: #ce5c00; font-weight: bold;">-</span><span style="color: #0000cf; font-weight: bold;">1</span><span style="color: black; font-weight: bold;">)</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: black; font-weight: bold;">((</span><span style="color: black;">r2</span><span style="color: #ce5c00; font-weight: bold;">**</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">N</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: #0000cf; font-weight: bold;">2</span><span style="color: black; font-weight: bold;">))</span><span style="color: #ce5c00; font-weight: bold;">-</span><span style="color: #0000cf; font-weight: bold;">1</span><span style="color: black; font-weight: bold;">)</span>
+
+<span style="color: #204a87; font-weight: bold;">for</span> <span style="color: black;">i</span> <span style="color: #204a87; font-weight: bold;">in</span> <span style="color: #204a87;">range</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">N</span><span style="color: black; font-weight: bold;">):</span>
+    
+    <span style="color: #204a87; font-weight: bold;">if</span> <span style="color: black; font-weight: bold;">(</span><span style="color: black;">i</span> <span style="color: #ce5c00; font-weight: bold;">&lt;</span> <span style="color: black;">N</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: #0000cf; font-weight: bold;">2</span><span style="color: black; font-weight: bold;">):</span>
+        <span style="color: black;">Fc</span><span style="color: #ce5c00; font-weight: bold;">.</span><span style="color: black;">append</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">Fc</span><span style="color: black; font-weight: bold;">[</span><span style="color: black;">i</span><span style="color: black; font-weight: bold;">]</span><span style="color: #ce5c00; font-weight: bold;">+</span><span style="color: black;">a</span><span style="color: #ce5c00; font-weight: bold;">*</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">r</span><span style="color: #ce5c00; font-weight: bold;">**</span><span style="color: black;">i</span><span style="color: black; font-weight: bold;">))</span>
+    <span style="color: #204a87; font-weight: bold;">else</span><span style="color: black; font-weight: bold;">:</span>
+        <span style="color: black;">i2</span><span style="color: #ce5c00; font-weight: bold;">=</span><span style="color: black;">i</span><span style="color: #ce5c00; font-weight: bold;">-</span><span style="color: #204a87;">int</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">N</span><span style="color: #ce5c00; font-weight: bold;">/</span><span style="color: #0000cf; font-weight: bold;">2</span><span style="color: black; font-weight: bold;">)</span>
+        <span style="color: black;">Fc</span><span style="color: #ce5c00; font-weight: bold;">.</span><span style="color: black;">append</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">Fc</span><span style="color: black; font-weight: bold;">[</span><span style="color: black;">i</span><span style="color: black; font-weight: bold;">]</span><span style="color: #ce5c00; font-weight: bold;">+</span><span style="color: black;">a2</span><span style="color: #ce5c00; font-weight: bold;">*</span><span style="color: black; font-weight: bold;">(</span><span style="color: black;">r2</span><span style="color: #ce5c00; font-weight: bold;">**</span><span style="color: black;">i2</span><span style="color: black; font-weight: bold;">))</span>
+</pre></div>
+
+				<br><br>
+
+				The bell-shaped is very similar to Non-Uniform meshing wherein the length has been divided into two and the meshing is done in increasing manner for the first half and decreasing manner for the second.
+
+				<br><br>
+
+				Now that the face-centers are computed. The Cell centers, Cell widths and Face-widths are derived and the mesh is drawn to verify the grid that is generated using the Face-center values through the following code.
+
+				<br><br>
+
+				The plot module in Matplotlib can be used to visualise the mesh both in one-dimension and two-dimensions as shown below.
+
+
+				<br><br>
+				
+
 			</div>
+
+			<div>
+	  			<br>
+	  			<br>
+	  			<br>
+	  			<br>
+	  			<a href="">Download Full Python Code</a>
+	  		</div>
 	  </div>
 
+
+	  <!--Script for Side Tabs-->
 	  <script type="text/javascript">
 		document.getElementById("defaultOpen").click();
 		function openTab(evt, tabName){
@@ -52,6 +173,6 @@
   			document.getElementById(tabName).style.display = "block";
   			evt.currentTarget.className += " active";
 		}
-	</script>
+		</script>
 </body>
 </html>
