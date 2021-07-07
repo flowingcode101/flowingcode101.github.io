@@ -1,25 +1,38 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>
-		Flowing Code
-	</title>
-	<link rel="stylesheet" href="style.css"> 
-</head>
-<body>
-	<!--<div id='circle' align = center></div>-->
-	<h1 align = center> Flowing Code </h1>
-	<h3 align = center> <i> Code that makes things flow... </i> </h3>
-	
-	<hr id='title-hr'>
-	<div id='tab'>
-		<a href = "index.html" id = 'tab-button'> HOME </a>
-		<a href="index.html" id = 'tab-button'> REFERENCES</a>
-	</div>
-	<hr id='title-hr'>
 
-	<div id="home-content">
-		<a href="firstpost.html"> First Post</a>
-	</div>
-</body>
+<html>
+	<head>
+		<title> Home </title>
+		<link rel="stylesheet" href="style.css">
+		<script type = "text/javascript" src="scripts\jquery.js"></script>
+
+		<script type = "text/javascript">
+			$(function(){
+				$("#header").load("header.html"); 
+			});
+		</script>
+		<script type = "text/javascript">
+			$(function(){
+				$("#side-left").load("side-left.html"); 
+			});
+		</script>
+		<script type = "text/javascript">
+			$(function(){
+				$("#excerpts").load("excerpts.html"); 
+			});
+		</script>
+		<script type = "text/javascript">
+			$(function(){
+				$("#footer").load("footer.html");
+			});
+		</script>
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="side-left"></div>
+		<div id="side-right"></div>
+		<div id="excerpts"></div>
+		<div id="footer"></div>
+	</body>
 </html>
+
